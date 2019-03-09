@@ -39,7 +39,7 @@
     "semicolon": [ true, "always" ],
     "prefer-template": [ true, "allow-single-concat" ],
     "one-variable-per-declaration": [ true ],
-    "jsx-alignment": true,
+    "jsx-alignment": false,
     "jsx-boolean-value": [ true, "never" ],
     "jsx-no-multiline-js": false,
     "jsx-no-string-ref": true,

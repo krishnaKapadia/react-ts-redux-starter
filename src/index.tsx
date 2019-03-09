@@ -5,11 +5,11 @@ import 'react-app-polyfill/ie11';
 
 import './Styles/_global.css';
 import * as ServiceWorker from './Services/serviceWorker';
-import App from './Sections/Dashboard/App';
 import { GrommetTheme } from './Styles/theme';
+import App from './Sections/App';
 
 ReactDOM.render(
-  <Grommet theme={GrommetTheme}>
+  <Grommet theme={GrommetTheme} full>
     <App />
   </Grommet>,
   document.getElementById('root') as HTMLElement,

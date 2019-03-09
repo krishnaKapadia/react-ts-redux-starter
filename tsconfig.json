@@ -11,7 +11,6 @@
     "jsx": "preserve",
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
-    "baseUrl": ".",
     "lib": [
       "es5",
       "dom",
