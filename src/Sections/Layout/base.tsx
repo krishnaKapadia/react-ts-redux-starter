@@ -1,8 +1,9 @@
 import React from 'react';
-import { Box, Grid, Text, Heading } from 'grommet';
+import { Box, Grid } from 'grommet';
 import Dashboard from '../Dashboard';
 import { BaseLayoutGridAreas, BaseLayoutGridConfig, SidebarGridAreas, SidebarGridConfig } from './models';
-import { Menu as MenuIcon } from 'grommet-icons';
+import Menu from '../Menu';
+import { FUNCTION, SidebarContentBase } from '../Sidebar';
 
 type LayoutBaseProps = {};
 
@@ -25,15 +26,11 @@ type SidebarBaseProps = {};
 const SidebarBase: React.FunctionComponent<SidebarBaseProps> = () => (
    <Grid {...SidebarGridConfig}>
       <Box gridArea={SidebarGridAreas.Menu} background={'white'} direction={'row'} justify={'between'} pad={{ horizontal: 'small', vertical: 'small'}}>
-        {/*<Button icon={<MenuIcon/>} label={"Menu"} onClick={() => console.log("Expand")} />*/}
-        <div>
-          <MenuIcon color={"accent-1"} style={{ alignSelf: 'start', marginRight: '15px' }} />
-          <Text weight={"bold"} color={"brand"} style={{ float: "right"}}>GIVE</Text>
-        </div>
+          <Menu />
       </Box>
 
      <Box gridArea={SidebarGridAreas.Content} background={'orange'}>
-        <p>Content area</p>
+       <SidebarContentBase display={FUNCTION.TODO} />
       </Box>
    </Grid>
 );

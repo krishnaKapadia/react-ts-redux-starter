@@ -9,8 +9,8 @@ type Props = {
 class Dashboard extends Component<Props> {
   render() {
     return (
-      <Box fill>
-        <h1 className="hljs-title">Title</h1>
+      <Box fill background={"dark-3"}>
+        Dashboard
       </Box>
     );
   }

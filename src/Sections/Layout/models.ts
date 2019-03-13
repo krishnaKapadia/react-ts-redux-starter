@@ -7,7 +7,7 @@ export enum BaseLayoutGridAreas {
 
 export const BaseLayoutGridConfig: GridProps = {
   rows: ['flex'],
-  columns: ['medium', 'flex'],
+  columns: ['1/3', 'flex'],
   areas: [
     {
       name: BaseLayoutGridAreas.Sidebar,
