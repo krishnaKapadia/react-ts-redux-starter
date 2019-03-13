@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { Box, Grid, Text } from 'grommet';
 
 const GridConfig = {
-  rows: ["flex"],
+  rows: ["xsmall"],
   columns: ["flex", "xsmall"],
   gap: "small",
   fill: true,
