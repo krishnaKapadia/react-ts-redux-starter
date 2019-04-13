@@ -1,22 +1,25 @@
 import React, { FunctionComponent, useState } from 'react';
-import { Box, Button, Form, Text, TextInput } from 'grommet';
+// import { Box, Button, Form, Text, TextInput } from 'grommet';
 import { FormLock, View } from 'grommet-icons';
-import { FormField } from 'grommet/es6';
+import { Box, FormField, TextInput } from 'grommet/es6';
+// import { FormField } from 'grommet/es6';
 
 type Props = {
   label: string;
+  type: 'text' | 'password' | 'email';
   name?: string;
   value?: any;
+  onChange: (value: string) => void;
+  required?: boolean;
 };
 
-export const PasswordInput: FunctionComponent<Props> = ({ value, name, label, ...rest }) => {
+export const Input: FunctionComponent<Props> = ({ value, name, label, onChange, ...props }) => {
   const [inputValue, setValue] = useState(value);
   const [reveal, setReveal] = useState(false);
   return (
     <FormField
       label={label}
       name={name}
-      required
     >
       <Box
         width="medium"
@@ -24,15 +27,10 @@ export const PasswordInput: FunctionComponent<Props> = ({ value, name, label, ..
       >
         <TextInput
           plain
-          name={label}
-          type={reveal ? 'text' : 'password'}
+          type={props.type}
           value={inputValue}
-          onChange={event => setValue(event.target.value)}
-          {...rest}
-        />
-        <Button
-          icon={reveal ? <FormLock size="medium" /> : <View size="medium" />}
-          onClick={() => setReveal(!reveal)}
+          onChange={(event: any) => onChange(event.target.value)}
+          {...props}
         />
       </Box>
     </FormField>

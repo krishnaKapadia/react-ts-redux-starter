@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: "Nexa";
+  font-weight: 600;
+}
+
+.label.label {
+  padding-left: 0px;
+}
+
+.input.input {
+  background: #f5f6fa;
+  border: none;
+  padding: 16px !important;
+  height: 54px;
+  border-radius: 8px;
+}
+
+.input.input:hover, .input.input:active, .input.input:focus {
+  background: #f5f6fa;
+}
+
+.full-width.full-width {
+  width: 100%;
+}
+
+.full-height {
+  height: 100vh;
+}
+
+.btn {
+  border-width: 2px;
+}
+
+.btn-outline {
+  border-width: 2px;
+}
+
+.subtext {
+  color: #b6b6b6;
+}
+/*# sourceMappingURL=global.css.map */

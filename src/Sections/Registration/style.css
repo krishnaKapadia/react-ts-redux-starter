@@ -1,0 +1,23 @@
+.registration-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 24px;
+  width: 100%;
+  background: #c0b1fc;
+}
+
+.registration-footer .step {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+}
+
+.registration-footer .step:last-child {
+  left: 50%;
+}
+
+.registration-footer .step.step__active {
+  background: #9980FA;
+}
+/*# sourceMappingURL=style.css.map */

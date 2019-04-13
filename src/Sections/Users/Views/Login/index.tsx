@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import { History } from 'history';
-import { 
-  Container, 
-  Row, 
-  Col, 
-  FormGroup, 
-  Input, 
+import {
+  Container,
+  Row,
+  Col,
+  FormGroup,
+  Input,
   Label,
   Button,
 } from 'reactstrap';
 
 import './index.css';
 import { Link } from 'react-router-dom';
-import { Routes } from '../Routes';
 
 type PassedProps = {
   history: History
@@ -61,18 +60,18 @@ class LoginContainer extends Component<PassedProps, StateProps> {
                 </FormGroup>
                 <FormGroup>
                   <Label className="label" for="examplePassword" sm={2}>Password</Label>
-                  <Input 
-                    value={this.state.password} 
-                    onChange={(e) => this.setState({ password: e.target.value })} 
-                    className="input" 
-                    type="password" 
-                    name="password" 
+                  <Input
+                    value={this.state.password}
+                    onChange={(e) => this.setState({ password: e.target.value })}
+                    className="input"
+                    type="password"
+                    name="password"
                   />
                 </FormGroup>
 
                 <Row>
                   <Col sm={'12'} md={'6'}>
-                    <Link to={"/register"}>   
+                    <Link to={"/register"}>
                       <Button outline className="btn-outline full-width">
                         Register
                       </Button>

@@ -1,0 +1,68 @@
+.login-layout {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+.content {
+  background: white;
+  width: 90%;
+}
+
+.login {
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.title {
+  position: relative;
+  top: -24px;
+  font-family: 'Josefin Sans';
+  font-weight: 400;
+}
+
+.login--title {
+  color: #B3B3B3;
+  padding: 8px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  justify-self: flex-start;
+}
+
+.loginForm {
+  display: block;
+  margin-bottom: 56px;
+}
+
+.background-purple {
+  background-color: blueviolet;
+}
+
+.background-green {
+  background-color: #81ecec;
+}
+
+.social {
+  margin-top: 40px;
+  margin-bottom: 12px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  height: 24px;
+  width: 100%;
+  background: yellow;
+  color: #b6b6b6;
+}
+/*# sourceMappingURL=index.css.map */
