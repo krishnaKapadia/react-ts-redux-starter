@@ -1,0 +1,12 @@
+.textLink {
+  color: #58d8ff;
+  cursor: pointer;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.textLink:hover, .textLink:active, .textLink:focus {
+  color: #00a5d8;
+  text-decoration: none;
+}
+/*# sourceMappingURL=global.css.map */

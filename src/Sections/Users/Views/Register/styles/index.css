@@ -1,0 +1,39 @@
+.registration-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.registration-footer .subtitle {
+  padding-left: 16px;
+  padding-bottom: 16px;
+  color: #B3B3B3;
+}
+
+.registration-footer .percentage {
+  color: #9980FA;
+}
+
+.registration-footer .loadingBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 16px;
+  width: 100%;
+  background: #c0b1fc;
+}
+
+.registration-footer .loadingBar .step {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+}
+
+.registration-footer .loadingBar .step:last-child {
+  left: 50%;
+}
+
+.registration-footer .loadingBar .step.step__active {
+  background: #9980FA;
+}
+/*# sourceMappingURL=index.css.map */

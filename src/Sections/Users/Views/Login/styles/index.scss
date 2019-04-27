@@ -24,7 +24,7 @@
 }
 
 .login--title {
-    color: #B3B3B3;
+    color: lighten(#00B9F1, 20%);
     padding: 8px;
     position: absolute;
     top: 10px;
@@ -60,3 +60,4 @@
     background: yellow;
     color: lighten($color: #B3B3B3, $amount: 1);
 }
+

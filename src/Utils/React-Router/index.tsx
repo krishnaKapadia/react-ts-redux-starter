@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import createBrowserHistory from "history/createBrowserHistory";
+import { createBrowserHistory } from "history";
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
 
 export const History = createBrowserHistory();

@@ -1,0 +1,39 @@
+.registration-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+    .subtitle {
+        padding-left: 16px;
+        padding-bottom: 16px;
+        color: #B3B3B3;
+    }
+
+    .percentage {
+        color: #9980FA;
+    }
+
+    .loadingBar {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 16px;
+        width: 100%;
+        background: lighten(#9980FA, 10%);
+
+        .step {
+            width: 50%;
+            height: 100%;
+            position: absolute;
+
+            &:last-child {
+                left: 50%;
+            }
+
+            &.step__active {
+                background: #9980FA;
+            }
+        }
+    }
+    
+}

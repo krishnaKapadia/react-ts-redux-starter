@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import LoginContainer from './Login/index';
-// import { Row, Col, Grid, FlexboxGrid } from 'rsuite';
 import { Text, Grid, Box } from 'grommet';
 import { Router } from '../Utils/React-Router';
 import { GlobalRoutes } from './Routes/index';
+import '../Styles/global.css';
 
 type StateProps = {};
 

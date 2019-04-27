@@ -1,8 +1,9 @@
 {
+  // "extends": "./tsconfig.paths.json",
   "compilerOptions": {
     "sourceMap": true,
     "noImplicitAny": true,
-    "alwaysStrict": true,
+    "alwaysStrict": false,
     "noImplicitThis": true,
     "noUnusedParameters": true,
     "removeComments": true,
@@ -22,10 +23,11 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "strict": true,
+    "strictNullChecks": false,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true
+    "noEmit": true,
+    "strict": false
   },
   "include": [
     "src"

@@ -38,7 +38,7 @@
     "class-name": true,
     "semicolon": [ true, "always" ],
     "prefer-template": [ true, "allow-single-concat" ],
-    "one-variable-per-declaration": [ true ],
+    "one-variable-per-declaration": [ false ],
     "jsx-alignment": false,
     "jsx-boolean-value": [ true, "never" ],
     "jsx-no-multiline-js": false,

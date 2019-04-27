@@ -1,0 +1,31 @@
+// Global styles
+@mixin hover-state {
+  @include transition(all, 0.5s);
+
+  &:hover, &:active, &:focus {
+    @content;
+  }
+}
+
+@mixin transition($what: all, $time: 0.2s) {
+  -webkit-transition: $what $time;
+  -moz-transition: $what $time;
+  -ms-transition: $what $time;
+  -o-transition: $what $time;
+  transition: $what $time;
+}
+
+
+.textLink {
+  color: lighten(#00B9F1, 20%);
+  cursor: pointer;
+
+  @include hover-state {
+    color: darken(#00B9F1, 5%);
+    text-decoration: none;
+  }
+
+  // @include hover-state {
+  //   text-decoration: none;
+  // }
+}
