@@ -18,7 +18,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { PulseLoader } from 'react-spinners';
 
-import { LoginRequest, UserState, IPasswordResetRequest } from '../../Models';
+import { LoginRequest, UserState, IPasswordResetRequest, IValidateResetTokenStatus } from '../../Models';
 import { Dispatch } from 'redux';
 import * as Actions from '../../Actions';
 import { History } from './../../../../Utils/React-Router/index';
@@ -48,7 +48,6 @@ type StateProps = {
 
 type DispatchProps = {
   login: (payload: LoginRequest) => void;
-  requestPasswordReset: (payload: IPasswordResetRequest) => void;
 };
 
 type Props = PassedProps & StateProps & DispatchProps;
@@ -70,73 +69,6 @@ class UnconnectedLoginContainer extends Component<Props, State> {
     };
 
     this.props.login(payload);
-  }
-
-  handleResetSubmission = (e: any) => {
-    e.preventDefault();
-
-    const { passwordResetEmail } = this.state;
-    const payload = {
-      email: passwordResetEmail
-    };
-
-    this.props.requestPasswordReset(payload);
-  }
-  
-  renderPasswordReset = () => {
-    return (
-      <Form onSubmit={this.handleResetSubmission}>
-        {
-          this.props.passwordResetSuccess ?
-          <p>A password reset email was sent to {this.state.passwordResetEmail}. 
-          Please follow the instructions to reset your password.
-          </p>
-          :
-          <FormGroup>
-            <Label className="label" for="exampleEmail" sm={2}>Email</Label>
-            <Input
-              required
-              value={this.state.passwordResetEmail}
-              onChange={(e) => this.setState({ passwordResetEmail: e.target.value })}
-              className="input"
-              type="email"
-              name="passwordResetEmail"
-              id="passwordResetEmail"
-              invalid={this.props.hasResetError}
-            />
-            <ErrorText show={this.props.hasResetError} error={"That email was not found. Please try again."} />
-          </FormGroup>
-        }
-
-        <Row>
-          <Col sm={'12'} md={this.props.passwordResetSuccess ? '12' : '6'}>
-            <Button 
-              onClick={() => this.setState({ renderPasswordReset: false })} 
-              className="btn-outline full-width"
-              type='button'
-              color={this.props.passwordResetSuccess ? 'primary': 'secondary'}
-              outline={!this.props.passwordResetSuccess}
-            >
-              Login
-            </Button>
-          </Col>
-
-                  
-          {
-            !this.props.passwordResetSuccess &&
-            <Col sm={'12'} md={'6'}>
-              <Button color='primary' className="btn-blue full-width" type="submit">
-                {this.props.isPasswordResetLoading ?
-                  <PulseLoader size={10} color={'white'} /> :
-                  'Reset password'
-                }
-              </Button>
-            </Col>
-          }  
-         
-        </Row>
-      </Form>
-    );
   }
 
   renderLogin = () => {
@@ -171,9 +103,11 @@ class UnconnectedLoginContainer extends Component<Props, State> {
 
         <Row style={{ marginBottom: '12px' }}>
           <Col sm={'12'}>
-            <p className="textLink" onClick={() => this.setState({ renderPasswordReset: true })}>
-              Forgot password?
-            </p>
+            <Link to={'/forgotPassword'}>
+              <p className="textLink">
+                Forgot password?
+              </p>
+            </Link>
           </Col>
         </Row>
 
@@ -201,6 +135,8 @@ class UnconnectedLoginContainer extends Component<Props, State> {
   }
 
   render() {
+    const title = this.state.renderPasswordReset ? "Forgot password" : "Sign in";
+
     return (
       <Container className={"login-layout"} fluid>
         <Row className={"full-height"}>
@@ -212,14 +148,14 @@ class UnconnectedLoginContainer extends Component<Props, State> {
             <div className="content">
               <Row>
                 <Col sm={"12"}>
-                  <h1 className="title">Sign in</h1>
+                  <h1 className="title">{title}</h1>
                 </Col>
               </Row>
 
               <div className="loginForm">
                 {
-                  this.state.renderPasswordReset ?
-                    this.renderPasswordReset() :
+                  // this.state.renderPasswordReset ?
+                  //   this.renderPasswordReset() :
                     this.renderLogin()
                 }
               </div>
@@ -267,6 +203,5 @@ export const LoginContainer = connect<StateProps, DispatchProps>(
   }),
   (dispatch: Dispatch) => ({
     login: (payload: LoginRequest) => dispatch(Actions.LoginRequest(payload)),
-    requestPasswordReset: (payload: IPasswordResetRequest) => dispatch(Actions.ResetRequest(payload))
   })
 )(UnconnectedLoginContainer);

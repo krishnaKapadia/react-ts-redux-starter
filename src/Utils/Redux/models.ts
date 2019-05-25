@@ -6,7 +6,7 @@ export type IRequestStatus = {
 
 export const InitialRequestState: IRequestStatus = {
     sent: false,
-    success: false,
+    success: null,
     failure: null
 };
 

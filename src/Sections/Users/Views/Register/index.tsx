@@ -35,6 +35,8 @@ type Props = StateProps & DispatchProps;
 type State = {
   email: string;
   password: string;
+  passwordConfirmation: string;
+  passwordConfirmationError: boolean;
   firstName: string;
   lastName: string;
   step: number;
@@ -44,6 +46,8 @@ class UnconnectedRegistrationContainer extends Component<Props, State> {
   state = {
     email: "",
     password: "",
+    passwordConfirmation: "",
+    passwordConfirmationError: false,
     firstName: "",
     lastName: "",
     step: 0,
@@ -51,9 +55,9 @@ class UnconnectedRegistrationContainer extends Component<Props, State> {
 
   handleSubmission = (e: any) => {
     e.preventDefault();
-    const { email, password, firstName, lastName } = this.state;
+    const { email, password, passwordConfirmation, firstName, lastName } = this.state;
     const payload = {
-      email, password, firstName, lastName
+      email, password, passwordConfirmation, firstName, lastName
     };
 
     this.props.register(payload);
@@ -74,12 +78,27 @@ class UnconnectedRegistrationContainer extends Component<Props, State> {
 
         <Form onSubmit={this.next}>
           <FormGroup>
-            <Label className="label" for="exampleEmail">Email</Label>
+            <Label className="label" for="email">Email</Label>
             <Input required value={this.state.email} onChange={(e) => this.setState({ email: e.target.value })} className="input" type="email" name="email" id="exampleEmail" placeholder="Email" />
           </FormGroup>
           <FormGroup>
-            <Label className="label" for="examplePassword">Password</Label>
-            <Input required value={this.state.password} onChange={(e) => this.setState({ password: e.target.value })} className="input" type="password" name="password" id="examplePassword" placeholder="Password" />
+            <Label className="label" for="password">Password</Label>
+            <Input required value={this.state.password} 
+            onChange={(e) => this.setState({ password: e.target.value })} 
+            className="input" type="password" name="password" id="examplePassword" 
+            placeholder="Password" 
+              invalid={this.state.passwordConfirmationError}
+          />
+          </FormGroup>
+          <FormGroup>
+            <Label className="label" for="passwordConfirmation">Password confirmation</Label>
+            <Input required value={this.state.passwordConfirmation}
+            onChange={(e) => this.setState({ passwordConfirmation: e.target.value })} 
+            className="input" type="password" name="passwordConfirmation" id="passwordConfirmation" 
+            placeholder="Please re-enter password"
+            invalid={this.state.passwordConfirmationError}
+          />
+            <ErrorText show={this.state.passwordConfirmationError} error={"Passwords do not match!"} />
             <ErrorText show={!isNil(this.props.error)} error={error} />
           </FormGroup>
 
@@ -118,11 +137,19 @@ class UnconnectedRegistrationContainer extends Component<Props, State> {
         <Form onSubmit={this.handleSubmission}>
           <FormGroup> 
             <Label className="label">First name</Label>
-            <Input required value={this.state.firstName} onChange={(e) => this.setState({ firstName: e.target.value })} className="input" type="text" name="firstName" id="firstName" placeholder="First name" />
+            <Input required value={this.state.firstName} 
+            onChange={(e) => this.setState({ firstName: e.target.value })} 
+            className="input" type="text" name="firstName" id="firstName" 
+            placeholder="First name"
+          />
           </FormGroup>
           <FormGroup>
             <Label className="label">Last name</Label>
-            <Input required value={this.state.lastName} onChange={(e) => this.setState({ lastName: e.target.value })} className="input" type="text" name="lastName" id="lastName" placeholder="Last name" />
+            <Input required value={this.state.lastName} 
+            onChange={(e) => this.setState({ lastName: e.target.value })} 
+            className="input" type="text" name="lastName" id="lastName" 
+            placeholder="Last name" 
+          />
             <ErrorText show={!isNil(this.props.error)} error={error} />
           </FormGroup>
 
@@ -137,7 +164,7 @@ class UnconnectedRegistrationContainer extends Component<Props, State> {
               <Button type='submit' color="primary" className="btn-blue full-width">
                 {this.props.isLoading ?
                   <PulseLoader size={10} color={'white'} /> :
-                  'Login'
+                  'Register'
                 }
               </Button>
             </Col>
@@ -162,7 +189,14 @@ class UnconnectedRegistrationContainer extends Component<Props, State> {
 
   next = (e: any) => {
     e.preventDefault();
-    this.setState((state) => ({ step: state.step + 1 }));
+
+    const { password, passwordConfirmation } = this.state;
+    if(password !== passwordConfirmation) {
+      this.setState({ passwordConfirmationError: true });
+    } else {
+      this.setState((state) => ({ step: state.step + 1, passwordConfirmationError: false }));
+    }
+
   }
 
   back = (e: any) => {

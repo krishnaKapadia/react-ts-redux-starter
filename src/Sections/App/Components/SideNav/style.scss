@@ -1,0 +1,46 @@
+.sideNav-container {
+  margin-top: 64px;
+
+  h4 {
+    margin-left: 30px;
+    font-size: 18px;
+    font-weight: 300;
+    margin-bottom: 32px;
+  }
+}
+
+.sideNav-list {
+  width: 100%;
+
+  a {
+    color: none;
+    
+    &:hover, &:focus {
+      text-decoration: none;      
+    }
+  }
+}
+
+.sideNav-list-item {
+  width: 100%;
+  margin-left: auto;
+  padding-left: 26px;
+  border: none;
+  border-radius: 0px !important;
+  font-weight: 600;
+  
+  &.sideNav-list-item__active {
+    padding-left: 20px;
+    border-left: 6px solid lightseagreen;
+    background: lighten(lightseagreen, 55%);
+  }
+  
+  .icon {
+    margin-right: 24px;
+  }
+}
+
+.sideNav-footer {
+  position: absolute;
+  bottom: 8px;
+}

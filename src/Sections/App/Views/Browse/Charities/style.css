@@ -1,0 +1,25 @@
+.container-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.container-header .container-header--title h2 {
+  font-weight: 500;
+}
+
+.container-header .btn-sort {
+  color: gray;
+  border: none;
+  border-radius: 4px !important;
+  background: white;
+}
+
+.container-header .btn-sort small {
+  font-weight: 600;
+  margin-right: 8px;
+}
+/*# sourceMappingURL=style.css.map */

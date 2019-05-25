@@ -5,6 +5,8 @@ import GlobalReducer from '../../GlobalReducer';
 import GlobalSagas from '../../GlobalSagas';
 import { History } from "../React-Router";
 import { assign } from 'lodash';
+import { persistStore } from "redux-persist";
+import { persistedReducer } from '../Redux-Persist';
 
 // Middlewares
 const SagaMiddleware = createSagaMiddleware();
@@ -12,10 +14,10 @@ const Middlewares = [
     SagaMiddleware
 ];
 
-const globalReducer = GlobalReducer();
+const persistedGlobalReducer = persistedReducer(GlobalReducer());
 
 const store = createReduxStore(
-    globalReducer,
+    persistedGlobalReducer,
     composeWithDevTools(
         applyMiddleware(...Middlewares)
     )
@@ -24,5 +26,6 @@ const store = createReduxStore(
 SagaMiddleware.run(GlobalSagas);
 
 export const createStore = () => ({
-    store
+    store,
+    persistor: persistStore(store)
 });
