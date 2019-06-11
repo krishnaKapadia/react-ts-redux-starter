@@ -14,7 +14,6 @@
       -ms-grid-row-align: center;
       align-self: center;
   min-height: 64px;
-  border-bottom: solid 2px lightgray;
 }
 
 .appContainer-content {

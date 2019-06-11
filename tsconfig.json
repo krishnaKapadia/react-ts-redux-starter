@@ -11,6 +11,7 @@
     "target": "es5",
     "jsx": "preserve",
     "forceConsistentCasingInFileNames": true,
+    "typeRoots": ["./src/Utils"],
     "moduleResolution": "node",
     "lib": [
       "es5",

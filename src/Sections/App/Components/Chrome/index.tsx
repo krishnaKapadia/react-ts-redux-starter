@@ -9,17 +9,17 @@ type Props = {
 };
 
 const SIDEBAR_SIZES = {
-  md: 4,
-  lg: 3,
-  xl: 2
+  md: 3,
+  lg: 2,
+  xl: 0
 };
 
 export const Chrome: FunctionComponent<Props> = ({ children }) => (
   <div className="appContainer">
     <Row>
-      <Col md={SIDEBAR_SIZES.md} lg={SIDEBAR_SIZES.lg} xl={SIDEBAR_SIZES.xl} className={"appContainer-logoSection"}>
-        {/* <p style={{ width: '100%' }}>Logo here</p> */}
-      </Col>
+      {/* <Col md={SIDEBAR_SIZES.md} lg={SIDEBAR_SIZES.lg} xl={SIDEBAR_SIZES.xl} className={"appContainer-logoSection"}>
+        <p>Logo here</p>
+      </Col> */}
 
       <Col style={{ minHeight: '64px' }}>
         <TopNav />
@@ -27,9 +27,9 @@ export const Chrome: FunctionComponent<Props> = ({ children }) => (
     </Row>
 
     <Row className={'appContainer-content'} style={{ overflowY: 'hidden' }}>
-      <Col md={SIDEBAR_SIZES.md} lg={SIDEBAR_SIZES.lg} xl={SIDEBAR_SIZES.xl} style={{ overflow: 'hidden', paddingRight: '0px' }}>
+      {/* <Col md={SIDEBAR_SIZES.md} lg={SIDEBAR_SIZES.lg} xl={SIDEBAR_SIZES.xl} style={{ overflow: 'hidden', paddingRight: '0px' }}>
         <SideNav />
-      </Col>
+      </Col> */}
 
       <Col style={{ background: '#ecf0f1' }}>
         <div className="app">

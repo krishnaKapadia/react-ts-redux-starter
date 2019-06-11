@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { GlobalState } from '../../../GlobalReducer';
+import { GlobalState } from '../../../Global/GlobalReducer';
 import { UserState } from '../Models';
 import { isNil } from 'lodash';
 import { ValidateResetTokenSuccess } from './../Actions/index';

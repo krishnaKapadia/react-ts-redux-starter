@@ -1,5 +1,4 @@
-import React, { Component, Fragment } from 'react';
-import { History } from 'history';
+import React, { Component } from 'react';
 import {
   Container,
   Row,
@@ -10,167 +9,245 @@ import {
   Button,
   Form,
 } from 'reactstrap';
-import { connect } from 'react-redux';
-import { PulseLoader } from 'react-spinners';
 import { Link } from 'react-router-dom';
-import { Dispatch } from 'redux';
-import { isNil } from 'lodash';
+import { default as NumberFormat } from 'react-number-format';
 import './styles/index.css';
-import { IRegistrationRequest, UserState } from '../../Models';
-import * as Selectors from '../../Selectors';
-import * as Actions from '../../Actions';
-import { ErrorText } from './../../../../Components/ErrorText/index';
-
-type StateProps = {
-  isLoading: boolean;
-  error: any;
-};
-
-type DispatchProps = {
-  register: (payload: IRegistrationRequest) => void;
-};
-
-type Props = StateProps & DispatchProps;
+import * as Constants from './constants';
+import classnames from 'classnames';
+import { isEmpty } from 'lodash';
+import { PaymentTabs } from '../../Components/PaymentTabs';
 
 type State = {
   email: string;
   password: string;
-  passwordConfirmation: string;
-  passwordConfirmationError: boolean;
   firstName: string;
   lastName: string;
+  selectedCost: string;
+  customCost: string;
+  selectedPeriod: string;
   step: number;
 };
 
-class UnconnectedRegistrationContainer extends Component<Props, State> {
+class UnconnectedRegistrationContainer extends Component<{}, State> {
   state = {
     email: "",
     password: "",
-    passwordConfirmation: "",
-    passwordConfirmationError: false,
     firstName: "",
     lastName: "",
-    step: 0,
+    selectedCost: "$5",
+    customCost: "",
+    selectedPeriod: "",
+    step: 2,
   };
 
-  handleSubmission = (e: any) => {
-    e.preventDefault();
-    const { email, password, passwordConfirmation, firstName, lastName } = this.state;
-    const payload = {
-      email, password, passwordConfirmation, firstName, lastName
-    };
+  next = () => {
+    this.setState((state) => ({ step: state.step + 1 }));
+  }
 
-    this.props.register(payload);
+  previous = () => {
+    this.setState((state) => ({ step: state.step - 1 }));
   }
 
   stepOne = () => {
-    const error = !isNil(this.props.error) && this.props.error.message;
-
     return (
-      <>
+      <Form onSubmit={(e: any) => {
+        e.preventDefault();
+
+        console.log(this.state);
+        this.next();
+      }}>
+        <FormGroup>
+          <Label className="label" for="emailInput">Email</Label>
+          <Input
+            required
+            value={this.state.email}
+            onChange={(e) => this.setState({ email: e.target.value })}
+            // className="input"
+            type="email"
+            name="emailInput"
+          />
+        </FormGroup>
+
+        <FormGroup>
+          <Label className="label" for="passwordInput" sm={2}>Password</Label>
+          <Input
+            value={this.state.password}
+            onChange={(e) => this.setState({ password: e.target.value })}
+            // className="input"
+            type="password"
+            name="passwordInput"
+            required
+          />
+        </FormGroup>
+
         <Row>
           <Col>
-            <Label className="label subtext">
-              <small>1: Details</small>
-            </Label>
+            <FormGroup>
+              <Label className="label" for="firstNameInput">First name</Label>
+              <Input
+                required
+                value={this.state.firstName}
+                onChange={(e) => this.setState({ firstName: e.target.value })}
+                // className="input"
+                type="text"
+                name="firstNameInput"
+              />
+            </FormGroup>
           </Col>
-        </Row> 
 
-        <Form onSubmit={this.next}>
-          <FormGroup>
-            <Label className="label" for="email">Email</Label>
-            <Input required value={this.state.email} onChange={(e) => this.setState({ email: e.target.value })} className="input" type="email" name="email" id="exampleEmail" placeholder="Email" />
-          </FormGroup>
-          <FormGroup>
-            <Label className="label" for="password">Password</Label>
-            <Input required value={this.state.password} 
-            onChange={(e) => this.setState({ password: e.target.value })} 
-            className="input" type="password" name="password" id="examplePassword" 
-            placeholder="Password" 
-              invalid={this.state.passwordConfirmationError}
-          />
-          </FormGroup>
-          <FormGroup>
-            <Label className="label" for="passwordConfirmation">Password confirmation</Label>
-            <Input required value={this.state.passwordConfirmation}
-            onChange={(e) => this.setState({ passwordConfirmation: e.target.value })} 
-            className="input" type="password" name="passwordConfirmation" id="passwordConfirmation" 
-            placeholder="Please re-enter password"
-            invalid={this.state.passwordConfirmationError}
-          />
-            <ErrorText show={this.state.passwordConfirmationError} error={"Passwords do not match!"} />
-            <ErrorText show={!isNil(this.props.error)} error={error} />
-          </FormGroup>
+          <Col>
+            <FormGroup>
+              <Label className="label" for="lastNameInput">Last name</Label>
+              <Input
+                required
+                value={this.state.lastName}
+                onChange={(e) => this.setState({ lastName: e.target.value })}
+                // className="input"
+                type="text"
+                name="lastNameInput"
+              />
+            </FormGroup>
+          </Col>
+        </Row>
 
-          <Row>
-            <Col sm={'12'} md={'6'}>
-              <Link to={"/login"}>
-                <Button type='button' outline className="btn-outline full-width">
-                  Login
-                </Button>
-              </Link>
-            </Col>
+        <Row className="onboarding-footer">
+          <Col>
+            <Link to="/auth/login">
+              <Button color='secondary' outline className={"btn-blue full-width"}>Login</Button>
+            </Link>
+          </Col>
+          <Col md={8}>
+            <Button color='primary' type="submit" className={"btn-blue full-width"}>Create Account</Button>
+          </Col>
+        </Row>
 
-            <Col sm={'12'} md={'6'}>
-              <Button type='submit' color="primary" className="btn-blue full-width">
-                Next
-              </Button>
-            </Col>
-          </Row>
-        </Form>
-      </>
+      </Form>
     );
   }
 
   stepTwo = () => {
-    const error = !isNil(this.props.error) && this.props.error.message;
+    const isActive = classnames("full-width", { 'input--inactive': !isEmpty(this.state.customCost) });
+
     return (
-      <>
-        <Row>
+      <Form onSubmit={(e: any) => {
+        e.preventDefault();
+
+        console.log(this.state);
+        this.next();
+      }}>
+        <FormGroup>
+          <Label className="label" for="emailInput"><b>HOW MUCH DO YOU WISH TO DONATE?</b></Label>
+          <Row>
+            {
+              Constants.Costs.map((c, idx) => (
+                <Col>
+                  <Button
+                    onClick={() => this.setState({ selectedCost: Constants.Costs[idx].cost, customCost: "" }) }
+
+                    className={
+                      classnames("full-width", {
+                        'input--inactive': !isEmpty(this.state.customCost),
+                        'input--selected': this.state.selectedCost === Constants.Costs[idx].cost
+                      })
+                    }
+                  outline>{c.cost}</Button>
+                </Col>
+              ))
+            }
+          </Row>
+
+          <Row style={{ marginTop: '12px' }}>
+            <Col md={"12"}>
+              <p style={{ textAlign: 'center' }}>OR</p>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col md={12}>
+              <NumberFormat
+                className={classnames({
+                  'input--active': !isEmpty(this.state.customCost)
+                })}
+                thousandSeparator={true}
+                prefix={'$'}
+                customInput={Input} 
+                value={this.state.customCost}
+                onChange={(e) => {
+                  console.log(e.target.value)
+                  this.setState({ customCost: e.target.value, selectedCost: "" })}
+                }
+                // className="input"
+                name="firstNameInput"
+                placeholder={"Enter a custom amount, e.g $17.50"}
+              />
+            </Col>
+          </Row>
+        </FormGroup>
+
+        
+
+        <FormGroup style={{ marginTop: '40px' }}>
+          <Label className="label" for="periodInput"><b>HOW OFTEN DO YOU WANT TO DONATE??</b></Label>
+          <Row>
+            {
+              Constants.Periods.map((p, idx) => (
+                <Col>
+                  <Button
+                    onClick={() => this.setState({ selectedPeriod: Constants.Periods[idx].period })}
+
+                    className={
+                      classnames("full-width", {
+                        'input--selected': this.state.selectedPeriod === Constants.Periods[idx].period
+                      })
+                    }
+                    outline>{p.period}</Button>
+                </Col>
+              ))
+            }
+          </Row>
+        </FormGroup>
+
+
+        <Row className="onboarding-footer">
           <Col>
-            <Label className="label subtext">
-              <small>2: Contact information</small>
-            </Label>
+            <Button onClick={this.previous} color='secondary' outline className={"btn-blue full-width"}>Back</Button>
+          </Col>
+          <Col md={8}>
+            <Button color='primary' type="submit" className={"btn-blue full-width"}>Next</Button>
           </Col>
         </Row>
 
-        <Form onSubmit={this.handleSubmission}>
-          <FormGroup> 
-            <Label className="label">First name</Label>
-            <Input required value={this.state.firstName} 
-            onChange={(e) => this.setState({ firstName: e.target.value })} 
-            className="input" type="text" name="firstName" id="firstName" 
-            placeholder="First name"
-          />
-          </FormGroup>
-          <FormGroup>
-            <Label className="label">Last name</Label>
-            <Input required value={this.state.lastName} 
-            onChange={(e) => this.setState({ lastName: e.target.value })} 
-            className="input" type="text" name="lastName" id="lastName" 
-            placeholder="Last name" 
-          />
-            <ErrorText show={!isNil(this.props.error)} error={error} />
-          </FormGroup>
+      </Form>
+    );
+  }
 
-          <Row> 
-            <Col sm={'12'} md={'6'}>
-              <Button type='button' onClick={this.back} outline className="btn-outline full-width">
-                Back
-              </Button>
-            </Col>
+  stepThree = () => {
+    return <h1>Placeholder</h1>;
+  }
 
-            <Col sm={'12'} md={'6'}>
-              <Button type='submit' color="primary" className="btn-blue full-width">
-                {this.props.isLoading ?
-                  <PulseLoader size={10} color={'white'} /> :
-                  'Register'
-                }
-              </Button>
-            </Col>
-          </Row>
-        </Form>
-      </>
+  stepFour = () => {
+    return(
+      <Form onSubmit={(e: any) => {
+        e.preventDefault();
+
+        console.log(this.state);
+        this.next();
+      }}>
+      
+        <PaymentTabs />
+
+        <Row className="onboarding-footer">
+          <Col>
+            <Link to="/auth/login">
+              <Button color='secondary' outline className={"btn-blue full-width"}>Login</Button>
+            </Link>
+          </Col>
+          <Col md={8}>
+            <Button color='primary' type="submit" className={"btn-blue full-width"}>Create Account</Button>
+          </Col>
+        </Row>
+
+      </Form>
     );
   }
 
@@ -181,101 +258,40 @@ class UnconnectedRegistrationContainer extends Component<Props, State> {
 
       case 1:
         return this.stepTwo();
+      
+      case 2:
+        return this.stepFour();
 
       default:
         return this.stepOne();
     }
   }
 
-  next = (e: any) => {
-    e.preventDefault();
-
-    const { password, passwordConfirmation } = this.state;
-    if(password !== passwordConfirmation) {
-      this.setState({ passwordConfirmationError: true });
-    } else {
-      this.setState((state) => ({ step: state.step + 1, passwordConfirmationError: false }));
-    }
-
-  }
-
-  back = (e: any) => {
-    e.preventDefault();
-    this.setState((state) => ({ step: state.step - 1 }));
-  }
-
   render() {
 
     return (
-      <Container className={"login-layout"} fluid>
-        <Row className={"full-height"}>
-          <Col md={12} lg={4} className={"section login full-height"}>
-            <div className="login--title">
-              <h1>Give</h1>
-            </div>
-
+      <Container fluid className={"full-height"}>
+        <Row className="onboarding-layout full-height">
+          <Col sm={12} md={7} lg={5} xl={4}>
             <div className="content">
-              <Row>
-                <Col sm={"12"}>
-                  <h1 className="title">Sign up</h1>
-                </Col>
-              </Row>
-
-              <div className="loginForm">
+              <div className="onboarding-header">
+                <h2>{ Constants.stepDefinitions[this.state.step].stepTitle }</h2>
+              </div>
+              
+              <div className="onboarding-content">
                 {this.stepDisplayController()}
               </div>
-
-              <div className="social">
-                <Label className="label semi-bold" for="examplePassword">
-                  Social sign up
-                </Label>
-              </div>
-
+              
+              {/*
               <Row>
-                <Col sm={'4'}>
-                  <Button outline className="btn-outline full-width">
-                    Facebook
-                  </Button>
-                </Col>
-                <Col sm={'4'}>
-                  <Button outline className="btn-outline full-width">
-                    Google
-                  </Button>
-                </Col>
-                <Col sm={'4'}>
-                  <Button outline className="btn-outline full-width">
-                    Linkedin
-                  </Button>
-                </Col>
-              </Row>
-            </div>
-
-            <div className="registration-footer">
-              <div className="subtitle">
-                <p>Progress:
-                  <span className="percentage"> {this.state.step === 0 ? '0%' : '50%'}</span>
-                </p>
-              </div>
-              <div className="loadingBar">
-                <span className={`step ${this.state.step >= 0 && 'step__active'}`} />
-                <span className={`step ${this.state.step >= 1 && 'step__active'}`} />
-              </div>
+                <Col></Col>
+              </Row> */}
             </div>
           </Col>
-
-          <Col xs={0} md={12} lg={8} className={"section background-green full-height d-none d-lg-block"} />
         </Row>
       </Container>
     );
   }
 }
 
-export const RegistrationContainer = connect<StateProps, DispatchProps>(
-  (state: any) => ({
-    isLoading: Selectors.isRegistrationLoading(state),
-    error: Selectors.getRegistrationError(state)
-  }),
-  (dispatch: Dispatch) => ({
-    register: (payload: IRegistrationRequest) => dispatch(Actions.RegistrationRequest(payload)),
-  })
-)(UnconnectedRegistrationContainer);
+export const RegistrationContainer = UnconnectedRegistrationContainer;

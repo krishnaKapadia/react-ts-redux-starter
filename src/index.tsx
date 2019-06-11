@@ -3,20 +3,21 @@ import ReactDOM from 'react-dom';
 import { Provider as ReduxProvider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
-import { Grommet } from 'grommet';
 import 'react-app-polyfill/ie11';
 
 require('typeface-josefin-sans');
+require('typeface-open-sans');
 
 import './Styles/_global.css';
 import * as ServiceWorker from './Services/serviceWorker';
-import { GrommetTheme } from './Styles/theme';
 import 'rsuite/dist/styles/rsuite.min.css';
 
 // Styling
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 import './Utils/Theme/global.css';
 import './Utils/Theme/colors.css';
+import './Utils/Theme/utilities.css';
 
 // Redux
 import { createStore } from './Utils/Redux';
@@ -28,9 +29,9 @@ Redux.persistor.purge();
 ReactDOM.render(
   <ReduxProvider store={Redux.store}>
     <PersistGate loading={null} persistor={Redux.persistor}>
-      <Grommet theme={GrommetTheme} full>
+      <div style={{ overflow: 'hidden' }}>
         <NavigationController />
-      </Grommet>
+      </div>
     </PersistGate>
   </ReduxProvider>
   , document.getElementById('root') as HTMLElement,

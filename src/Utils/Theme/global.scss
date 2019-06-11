@@ -3,8 +3,14 @@
     padding: 0;
 }
 
+// input {
+//     padding-top: 24px !important;
+//     padding-bottom: 24px !important;
+// }
+
 h1, h2, h3, h4, h5 {
-    font-family: "Nexa";
+    // font-family: "Nexa";
+    font-family: 'Open sans';
     font-weight: 600;
 }
 
@@ -30,6 +36,18 @@ h1, h2, h3, h4, h5 {
 
 .full-height { 
     height: 100vh; 
+}
+
+.float-right {
+    float: right;
+}
+
+.margin-none {
+    margin: 0px;
+}
+
+.clickable {
+    cursor: pointer;
 }
 
 .btn {

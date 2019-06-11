@@ -1,4 +1,4 @@
-import { DEV_URL } from "../GlobalConfig";
+import { DEV_URL } from "../Global/GlobalConfig";
 
 export const ENDPOINTS = {
     LOGIN: `${DEV_URL}/login`,

@@ -1,0 +1,217 @@
+// Variables
+$background: #48dbfb;
+
+@mixin backgroundAnimation {
+  background: linear-gradient(328deg, #48dbfb, #0abde3);
+  background-size: 400% 400%;
+
+  -webkit-animation: AnimationName 14s ease infinite;
+  -moz-animation: AnimationName 14s ease infinite;
+  -o-animation: AnimationName 14s ease infinite;
+  animation: AnimationName 14s ease infinite;
+
+  @-webkit-keyframes AnimationName {
+    0% {
+      background-position: 14% 0%
+    }
+
+    50% {
+      background-position: 87% 100%
+    }
+
+    100% {
+      background-position: 14% 0%
+    }
+  }
+
+  @-moz-keyframes AnimationName {
+    0% {
+      background-position: 14% 0%
+    }
+
+    50% {
+      background-position: 87% 100%
+    }
+
+    100% {
+      background-position: 14% 0%
+    }
+  }
+
+  @-o-keyframes AnimationName {
+    0% {
+      background-position: 14% 0%
+    }
+
+    50% {
+      background-position: 87% 100%
+    }
+
+    100% {
+      background-position: 14% 0%
+    }
+  }
+
+  @keyframes AnimationName {
+    0% {
+      background-position: 14% 0%
+    }
+
+    50% {
+      background-position: 87% 100%
+    }
+
+    100% {
+      background-position: 14% 0%
+    }
+  }
+}
+
+.GetStarted-Container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  @include backgroundAnimation();
+}
+
+.GetStarted-Card {
+  width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+  // margin-top: 140px;
+}
+
+.GetStarted-Header {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  top: -60px;
+  
+  h1 {
+    font-size: 3rem !important;
+    font-family: 'Open Sans';
+    font-weight: bold;
+    color: white;
+  }
+
+  .GetStarted-title {
+    float: left;
+  }
+
+  .GetStarted-progress {
+    float: right;
+
+    span {
+      color: #feca57;
+    }
+  }
+}
+
+.GetStarted-Body {
+  margin-bottom: 40px;
+}
+
+.GetStartedForm {
+
+  .formGroup-row {
+    display: flex;
+    justify-content: space-between;
+
+    .formGroup {
+      width: 45%;
+      margin-top: 0px;
+    }
+  }
+
+  .formGroup {
+    margin-bottom: 16px;
+    margin-top: 16px;
+  }
+
+  p {
+    color: white;
+    padding: 0px;
+    margin-bottom: 8px;
+    font-weight: bold;
+
+    &.fontWeightRegular {
+      font-weight: 400;
+    }
+  }
+
+  input {
+    padding: 12px;
+    width: 100%;
+    border: none;
+    border-radius: 6px;
+  }
+}
+
+.GetStarted-Outline-Button {
+  border: 2px solid white;
+  width: 100%;
+  margin: 12px auto;
+  color: white;
+  padding: 12px;
+
+  &.GetStarted-Outline-Button__active {
+    background: white;
+    color: $background;
+  }
+}
+
+.outlineInput {
+  color: white !important;
+  background: none;
+  border: 2px solid white !important;
+  padding-left: 20px;
+  font-size: 16px;
+  height: 50px;
+
+  &.outlineInput--active {
+    background: white;
+    color: $background !important;
+
+    &::placeholder {
+      color: background;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      background: white;
+    }
+  }
+
+  &::placeholder {
+    color: white;
+  }
+  
+  &:hover, &:active, &:focus {
+    background: none;
+  }
+
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.submit-button {
+  width: 100%;
+  background: #f368e0;
+  border-color: darken(#f368e0, 10%);
+}

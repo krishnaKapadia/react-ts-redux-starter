@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { Button, UncontrolledButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Row, Col, Button, UncontrolledButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { IoMdArrowDropdown } from 'react-icons/io';
-import './style.css';
+import './style/style.css';
 import { SortBy } from './constants';
+import { Charities } from './constants';
+import { CharityModule } from '../../../Components/CharityModule';
 
 type Props = {
 
@@ -19,7 +21,7 @@ class BrowseCharities extends Component<Props, State> {
 
     this.state = {
       dropdownOpen: false
-    }
+    };
   }
 
   render() {
@@ -50,7 +52,19 @@ class BrowseCharities extends Component<Props, State> {
         </div>
 
         <div className="container-body">
+            {/* <Row>
+              {
+                Charities.map((item, idx) => 
+                  <Col style={{ marginBottom: '24px', flex: '0 0 260px' }} key={idx}>
+                    <CharityModule data={item} />
+                  </Col>
+                )
+              }
+            </Row> */}
+          
 
+
+          {/* <CharityModule /> */}
         </div>
 
       </div>

@@ -22,4 +22,10 @@
   font-weight: 600;
   margin-right: 8px;
 }
+
+.container-body {
+  height: 75vh;
+  width: 100%;
+  margin-top: 20px;
+}
 /*# sourceMappingURL=style.css.map */

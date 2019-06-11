@@ -1,63 +1,28 @@
-.login-layout {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-}
-
-.content {
-    background: white;
-    width: 90%;
+.onboarding-layout {
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: -5vh;
 }
 
 .login {
     background-color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
-.title {
-    position: relative;
-    top: -24px;
-    font-family: 'Josefin Sans';
-    font-weight: 400;
+
+
+.onboarding-header {
+    text-align: center;
+    border-bottom: solid 2px #1C7CD5;
+    padding-bottom: 28px;
+    margin-bottom: 60px;
 }
 
-.login--title {
-    color: lighten(#00B9F1, 20%);
-    padding: 8px;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    justify-self: flex-start;
-}
-
-.loginForm {
+.onboardingForm {
     display: block;
     margin-bottom: 56px;
 }
 
-
-.background-purple {
-    background-color: blueviolet;
+.onboarding-footer {
+    margin-top: 60px;
 }
-
-.background-green {
-    background-color: #81ecec;
-}
-
-.social {
-    margin-top: 40px;
-    margin-bottom: 12px;
-}
-
-.footer {
-    position: absolute;
-    bottom: 24px;
-    left: 24px;
-    height: 24px;
-    width: 100%;
-    background: yellow;
-    color: lighten($color: #B3B3B3, $amount: 1);
-}
-

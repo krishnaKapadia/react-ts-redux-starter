@@ -10,7 +10,6 @@ type Props = {
 
 class TopNav extends Component<Props> {
 
-
   render(){
     return (
       
@@ -26,7 +25,7 @@ class TopNav extends Component<Props> {
         <Col md={4}>
           <div className="topNav-buttonContainer">
             <IoIosNotificationsOutline className={"icon"} size={"26px"} style={{ marginRight: '30px' }} />
-            <IoIosContact size={"24px"} className={"icon"} />
+            <IoIosContact size={"24px"} className="icon" />
           </div>
         </Col>
       </Row>

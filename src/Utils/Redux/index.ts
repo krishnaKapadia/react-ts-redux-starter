@@ -1,8 +1,8 @@
 import { applyMiddleware, createStore as createReduxStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
-import GlobalReducer from '../../GlobalReducer';
-import GlobalSagas from '../../GlobalSagas';
+import GlobalReducer from '../../Global/GlobalReducer';
+import GlobalSagas from '../../Global/GlobalSagas';
 import { History } from "../React-Router";
 import { assign } from 'lodash';
 import { persistStore } from "redux-persist";
