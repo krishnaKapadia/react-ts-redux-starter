@@ -15,14 +15,14 @@ class TopNav extends Component<Props> {
       
       <Row className={"topNav-container"}>
 
-        <Col md={8}>
+        <Col xs={7}>
           <div className={"topNav-searchContainer"}>
             <IoIosSearch />
             <input className={"topNav-searchbar"} placeholder={"Search..."} type="text" name="search" id="searchBar" />
           </div>
         </Col>
 
-        <Col md={4}>
+        <Col xs={5}>
           <div className="topNav-buttonContainer">
             <IoIosNotificationsOutline className={"icon"} size={"26px"} style={{ marginRight: '30px' }} />
             <IoIosContact size={"24px"} className="icon" />

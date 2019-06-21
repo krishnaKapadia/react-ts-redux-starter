@@ -1,3 +1,32 @@
+.browseCharitiesContainer {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 576px) {
+  .browseCharitiesContainer {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .browseCharitiesContainer {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .browseCharitiesContainer {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .browseCharitiesContainer {
+    max-width: 1140px;
+  }
+}
+
 .container-header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -26,6 +55,6 @@
 .container-body {
   height: 75vh;
   width: 100%;
-  margin-top: 20px;
+  padding: 1rem 0 2rem;
 }
 /*# sourceMappingURL=style.css.map */

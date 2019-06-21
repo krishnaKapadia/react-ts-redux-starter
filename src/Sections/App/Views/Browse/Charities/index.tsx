@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Row, Col, Button, UncontrolledButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { IoMdArrowDropdown } from 'react-icons/io';
 import './style/style.css';
-import { SortBy } from './constants';
+import { SortBy, Categories } from './constants';
 import { Charities } from './constants';
 import { CharityModule } from '../../../Components/CharityModule';
 
@@ -32,7 +32,21 @@ class BrowseCharities extends Component<Props, State> {
             <h2>Charities</h2>
           </div>
 
-          <div className="container-header--sort">
+          <div className="container-header">
+            <UncontrolledButtonDropdown style={{ marginRight: '24px' }}>
+              <DropdownToggle className="btn-sort">
+                <small>Categories</small>
+                <IoMdArrowDropdown color="gray" />
+              </DropdownToggle>
+
+              <DropdownMenu>
+                {
+                  Categories.map((item) => (
+                    <DropdownItem href={`#/${item}`}>{item}</DropdownItem>
+                  ))
+                }
+              </DropdownMenu>
+            </UncontrolledButtonDropdown>
 
             <UncontrolledButtonDropdown>
               <DropdownToggle className="btn-sort">
@@ -52,19 +66,15 @@ class BrowseCharities extends Component<Props, State> {
         </div>
 
         <div className="container-body">
-            {/* <Row>
-              {
-                Charities.map((item, idx) => 
-                  <Col style={{ marginBottom: '24px', flex: '0 0 260px' }} key={idx}>
-                    <CharityModule data={item} />
-                  </Col>
-                )
-              }
-            </Row> */}
-          
-
-
-          {/* <CharityModule /> */}
+          <Row>
+            {
+              Charities.map((item) => 
+                <Col sm={6} md={4} lg={3}>                    
+                  <CharityModule data={item} />
+                </Col>
+              )
+            }
+          </Row>
         </div>
 
       </div>

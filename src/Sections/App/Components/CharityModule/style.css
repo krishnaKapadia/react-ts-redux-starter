@@ -1,107 +1,88 @@
+.clickable:hover .charity-card {
+  -webkit-box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+          box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+}
+
 .charity-card {
-  position: relative;
+  text-decoration: none;
   background: white;
   border-radius: 10px !important;
-  height: 22rem;
   width: 100%;
-  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 2px 3px rgba(0, 0, 0, 0.24);
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 2px 3px rgba(0, 0, 0, 0.24);
-  -webkit-transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
-  transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: block;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  text-align: center;
+  position: relative;
 }
 
-.charity-card:hover {
-  -webkit-box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25), 0 6px 6px rgba(0, 0, 0, 0.22);
-          box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25), 0 6px 6px rgba(0, 0, 0, 0.22);
-}
-
-.charity-card a {
-  text-decoration: none;
-  color: inherit;
-}
-
-.charity-card a:focus, .charity-card a:hover, .charity-card a:visited, .charity-card a:link, .charity-card a:active {
+.charity-card h2, .charity-card p {
   text-decoration: none;
 }
 
-.charity-card-header {
-  background: #48dbfb;
-  border-top-left-radius: 10px !important;
-  border-top-right-radius: 10px !important;
-  height: 40%;
+@media (max-width: 576px) {
+  .charity-card {
+    padding: 1rem;
+  }
+}
+
+.charity-card__header {
   text-align: center;
 }
 
-.charity-card-header img {
-  width: 100%;
-  height: 100%;
-  border-top-left-radius: 10px !important;
-  border-top-right-radius: 10px !important;
-}
-
-.charity-card-body {
-  margin: 16px;
-}
-
-.charity-card-title {
-  font-size: 20px;
+.charity-card__header h2 {
   font-weight: 600;
-  padding-bottom: 4px;
-  border-bottom: 1px solid #ecf0f1;
-  color: #10ac84;
+  font-size: 20px;
 }
 
-.charity-card-description {
-  font-size: 14px;
-  margin: 8px auto;
+.charity-card__logo {
+  margin: 0 auto .5rem;
+  overflow: hidden;
+  width: 70px;
+  height: 70px;
+  position: relative;
 }
 
-.charity-card-footer {
+.charity-card__logo img {
   position: absolute;
-  bottom: 0;
-  left: 16px;
-  right: 16px;
-  padding-top: 4px;
-  border-top: 1px solid #ecf0f1;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  vertical-align: middle;
 }
 
-.charity-card-footer .charity-card-content {
+.charity-card__support {
+  color: #10ac84;
+  font-weight: 600;
+}
+
+.charity-card__footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-left: auto;
+  margin-right: auto;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-}
-
-.charity-card-content {
-  padding-bottom: 8px;
-  padding-top: 2px;
-}
-
-.charity-card-item {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 22%;
 }
 
-.charity-card-item.small-width {
-  width: 18%;
-}
-
-.charity-card-item span {
-  line-height: 100%;
-}
-
-.charity-card-item--green {
-  color: #10ac84;
-}
-
-.card-item-add {
-  cursor: pointer;
+@media (min-width: 576px) {
+  .charity-card__footer {
+    padding-top: 1rem;
+  }
 }
 /*# sourceMappingURL=style.css.map */

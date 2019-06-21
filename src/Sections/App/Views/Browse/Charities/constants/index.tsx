@@ -1,5 +1,13 @@
 import { ICharity } from '../../../../Models';
 
+export const Categories = [
+  "Animals",
+  "Community",
+  "Disaster",
+  "Education",
+  "Health",
+]
+
 const Charities: ICharity[] = [
   {
     name: "SPCA",

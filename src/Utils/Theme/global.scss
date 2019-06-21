@@ -10,12 +10,23 @@
 
 h1, h2, h3, h4, h5 {
     // font-family: "Nexa";
-    font-family: 'Open sans';
+    font-family: 'Open sans' !important;
     font-weight: 600;
 }
 
 .label.label {
     padding-left: 0px;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.icon-stacked {
+    
+    p{
+        margin-bottom: 0px;
+    }
 }
 
 .input.input {
@@ -62,11 +73,28 @@ h1, h2, h3, h4, h5 {
     color: lighten($color: #B3B3B3, $amount: 1);
 }
 
-// .btn-blue {
-//     background-color: #00B9F1;
-//     border-color: #00B9F1;
+.margin {
 
-//     &:hover {
-//         background-color: darken(#00B9F1, 0.9);
-//     }
-// }
+    &--16 {
+        margin: 16px;
+    
+    }
+
+    &--24 {
+        margin: 24px;
+    }
+
+    &--32 {
+        margin: 32px;
+    }
+
+}
+
+.btn-green {
+    background-color: #00B9F1;
+    border-color: #00B9F1;
+
+    &:hover {
+        background-color: darken(#00B9F1, 0.9);
+    }
+}

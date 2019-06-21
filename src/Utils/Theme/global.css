@@ -4,12 +4,20 @@
 }
 
 h1, h2, h3, h4, h5 {
-  font-family: 'Open sans';
+  font-family: 'Open sans' !important;
   font-weight: 600;
 }
 
 .label.label {
   padding-left: 0px;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.icon-stacked p {
+  margin-bottom: 0px;
 }
 
 .input.input {
@@ -54,5 +62,26 @@ h1, h2, h3, h4, h5 {
 
 .subtext {
   color: #b6b6b6;
+}
+
+.margin--16 {
+  margin: 16px;
+}
+
+.margin--24 {
+  margin: 24px;
+}
+
+.margin--32 {
+  margin: 32px;
+}
+
+.btn-green {
+  background-color: #00B9F1;
+  border-color: #00B9F1;
+}
+
+.btn-green:hover {
+  background-color: #00b5ec;
 }
 /*# sourceMappingURL=global.css.map */

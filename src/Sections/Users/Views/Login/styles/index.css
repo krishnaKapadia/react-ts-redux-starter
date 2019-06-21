@@ -1,31 +1,4 @@
-.onboarding-layout {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  position: relative;
-  top: -5vh;
-}
-
 .login {
   background-color: white;
-}
-
-.onboarding-header {
-  text-align: center;
-  border-bottom: solid 2px #1C7CD5;
-  padding-bottom: 28px;
-  margin-bottom: 60px;
-}
-
-.onboardingForm {
-  display: block;
-  margin-bottom: 56px;
-}
-
-.onboarding-footer {
-  margin-top: 60px;
 }
 /*# sourceMappingURL=index.css.map */
