@@ -24,15 +24,15 @@ import { createStore } from './Utils/Redux';
 import NavigationController from './Sections/Navigation';
 
 const Redux = createStore();
-Redux.persistor.purge();
+// Redux.persistor.purge();
 
 ReactDOM.render(
   <ReduxProvider store={Redux.store}>
-    <PersistGate loading={null} persistor={Redux.persistor}>
+    {/* <PersistGate loading={null} persistor={Redux.persistor}> */}
       <div style={{ overflow: 'hidden' }}>
         <NavigationController />
       </div>
-    </PersistGate>
+    {/* </PersistGate> */}
   </ReduxProvider>
   , document.getElementById('root') as HTMLElement,
 );

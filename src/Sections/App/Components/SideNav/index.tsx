@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { ListGroup, ListGroupItem } from 'reactstrap';
-import './style.css';
+import './styles/style.css';
 import { ReactComponentLike } from 'prop-types';
 import { IoMdBook } from 'react-icons/io';
 import { FiHeart, FiUnlock } from 'react-icons/fi';

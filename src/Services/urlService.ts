@@ -6,4 +6,6 @@ export const ENDPOINTS = {
     RESET_PASSWORD: `${DEV_URL}/forgotPassword`,
     RESET_PASSWORD_TOKEN_VALIDATION: `${DEV_URL}/validatePasswordResetToken`,
     RESET_PASSWORD_WITH_EMAIL: `${DEV_URL}/resetPasswordViaEmail`,
+
+    CHARITIES: `${DEV_URL}/charity`
 };

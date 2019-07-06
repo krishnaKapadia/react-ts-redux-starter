@@ -1,6 +1,7 @@
-.browseCharitiesContainer {
+.container {
   margin-left: auto;
   margin-right: auto;
+  position: relative;
 
   @media (min-width: 576px) {
     max-width: 540px;
@@ -23,14 +24,48 @@
 
 }
 
+.floatingContainer {
+  width: 180px;
+  height: 50px;
+  padding: 12px;
+  border-radius: 50px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  color: white;
+
+  &--left {
+    left: 0;
+    background: #1abc9c;
+  }
+
+  &--right {
+    right: 0;
+    background: #54a0ff;
+  }
+}
+
 .container-header {
   display: flex;
   justify-content: space-between;
-
+  
   .container-header--title {
+    display: flex;
+    align-items: center;
+
     h2 {
       font-weight: 500;
     }
+  }
+
+  .container-header--back-button {
+    display: flex;
+    align-items: center;
+    padding-right: 16px;
+    border-right: 2px solid #888989;
+    height: 100%;
+    margin-right: 16px;
   }
 
   .btn-sort {
@@ -47,10 +82,14 @@
 
 }
 
+.container-header-navigation {
+  margin-top: 24px !important;
+}
+
 .container-body {
   height: 75vh;
   width: 100%;
-  // margin-top: 20px;
+  margin-top: 20px;
   padding: 1rem 0 2rem;
   // flex: 1 1;
   // max-width: 1140px;

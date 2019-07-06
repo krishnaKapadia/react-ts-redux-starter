@@ -1,1 +1,25 @@
-/* No CSS *//*# sourceMappingURL=index.css.map */
+.profile-card {
+  border: none;
+  border-radius: 10px;
+  height: 100%;
+}
+
+.profile-card__body {
+  padding: 24px 24px;
+}
+
+.profile-card__title {
+  margin-bottom: 16px;
+  color: #707070;
+}
+
+.profile-card__icon {
+  text-align: center;
+  margin: 16px;
+}
+
+.profile-card__description img {
+  width: '100%';
+  background-size: cover;
+}
+/*# sourceMappingURL=index.css.map */

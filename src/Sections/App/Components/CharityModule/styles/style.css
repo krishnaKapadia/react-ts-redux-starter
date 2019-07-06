@@ -1,20 +1,21 @@
-.clickable:hover .charity-card {
-  -webkit-box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
-          box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
-}
-
 .charity-card {
   text-decoration: none;
   background: white;
   border-radius: 10px !important;
   width: 100%;
   display: block;
-  -webkit-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  transition: all 0.1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
   padding: 1rem;
   margin: 0.5rem 0;
   text-align: center;
   position: relative;
+}
+
+.charity-card--selected {
+  border: 2px solid #356ce4;
+  -webkit-box-shadow: 0 20px 50px rgba(53, 108, 228, 0.288);
+          box-shadow: 0 20px 50px rgba(53, 108, 228, 0.288);
 }
 
 .charity-card h2, .charity-card p {
@@ -25,6 +26,11 @@
   .charity-card {
     padding: 1rem;
   }
+}
+
+.charity-card:hover {
+  -webkit-box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+          box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
 }
 
 .charity-card__header {

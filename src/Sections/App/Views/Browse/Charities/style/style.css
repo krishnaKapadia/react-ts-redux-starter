@@ -1,30 +1,57 @@
-.browseCharitiesContainer {
+.container {
   margin-left: auto;
   margin-right: auto;
+  position: relative;
 }
 
 @media (min-width: 576px) {
-  .browseCharitiesContainer {
+  .container {
     max-width: 540px;
   }
 }
 
 @media (min-width: 768px) {
-  .browseCharitiesContainer {
+  .container {
     max-width: 720px;
   }
 }
 
 @media (min-width: 992px) {
-  .browseCharitiesContainer {
+  .container {
     max-width: 960px;
   }
 }
 
 @media (min-width: 1200px) {
-  .browseCharitiesContainer {
+  .container {
     max-width: 1140px;
   }
+}
+
+.floatingContainer {
+  width: 180px;
+  height: 50px;
+  padding: 12px;
+  border-radius: 50px;
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  justify-items: center;
+  color: white;
+}
+
+.floatingContainer--left {
+  left: 0;
+  background: #1abc9c;
+}
+
+.floatingContainer--right {
+  right: 0;
+  background: #54a0ff;
 }
 
 .container-header {
@@ -36,8 +63,30 @@
           justify-content: space-between;
 }
 
+.container-header .container-header--title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .container-header .container-header--title h2 {
   font-weight: 500;
+}
+
+.container-header .container-header--back-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-right: 16px;
+  border-right: 2px solid #888989;
+  height: 100%;
+  margin-right: 16px;
 }
 
 .container-header .btn-sort {
@@ -52,9 +101,14 @@
   margin-right: 8px;
 }
 
+.container-header-navigation {
+  margin-top: 24px !important;
+}
+
 .container-body {
   height: 75vh;
   width: 100%;
+  margin-top: 20px;
   padding: 1rem 0 2rem;
 }
 /*# sourceMappingURL=style.css.map */

@@ -1,9 +1,7 @@
 import React from 'react';
 import { Route } from "react-router-dom";
 import { UserSectionRoutes } from '../Users/Routes';
-import { AppRoutes } from '../App/Routes';
-import App from '../App';
-import BrowseCharities from './../App/Views/Browse/Charities/index';
+import { BrowseCharities } from './../App/Views/Browse/Charities/index';
 import { CharityProfile } from './../App/Views/Browse/CharityProfile/index';
 
 export enum Routes {

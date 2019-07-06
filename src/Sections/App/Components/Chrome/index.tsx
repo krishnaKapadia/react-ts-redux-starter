@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { Row, Col } from 'reactstrap';
-import './style.css';
+import './styles/style.css';
+
 import TopNav from './../TopNav/index';
 import SideNav from '../SideNav';
 

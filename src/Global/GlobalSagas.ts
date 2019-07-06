@@ -1,8 +1,7 @@
-import { SagaIterator } from 'redux-saga';
 import { UserSagas, login } from '../Sections/Users/Sagas';
-import { takeLatest } from 'redux-saga/effects';
-import * as Actions from '../Sections/Users/Actions';
+import { AppSagas } from '../Sections/App/Sagas';
 
 export default function*() {
+    yield AppSagas();
     yield UserSagas();
 }

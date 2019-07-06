@@ -65,7 +65,7 @@ export class CharitySelection extends Component<Props> {
         </Row>
 
         <Row>
-          <Col sm={6} md={4} lg={3}>
+          {/* <Col sm={6} md={4} lg={3}>
             <CharityModule data={data} />
           </Col>
 
@@ -79,7 +79,7 @@ export class CharitySelection extends Component<Props> {
           
           <Col sm={6} md={4} lg={3}>
             <CharityModule data={data} />
-          </Col>
+          </Col> */}
           {/* <Col>
             <div className="informationContainer">
               <Container>

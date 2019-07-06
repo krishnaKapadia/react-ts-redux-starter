@@ -3,13 +3,6 @@ $blue: #48dbfb;
 $green: #10ac84;
 $card-theme: $green;
 
-.clickable:hover {
-
-  .charity-card {
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
-  }
-}
-
 .charity-card {
   text-decoration: none;
   background: white;
@@ -17,11 +10,16 @@ $card-theme: $green;
   width: 100%;
   display: block;
   // box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
-  transition: all 0.2s ease-in-out;
+  transition: all 0.1s cubic-bezier(.17, .67, .83, .67);
   padding: 1rem;
   margin: 0.5rem 0;
   text-align: center;
   position: relative;
+
+  &--selected {
+    border: 2px solid rgb(53, 108, 228);
+    box-shadow: 0 20px 50px rgba(53, 108, 228, 0.288);
+  }
 
   h2, p {
     text-decoration: none;
@@ -29,6 +27,10 @@ $card-theme: $green;
 
   @media (max-width: 576px) {
     padding: 1rem;
+  }
+
+  &:hover {
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
   }
 }
 

@@ -14,7 +14,7 @@ const Middlewares = [
     SagaMiddleware
 ];
 
-const persistedGlobalReducer = persistedReducer(GlobalReducer());
+const persistedGlobalReducer = GlobalReducer();
 
 const store = createReduxStore(
     persistedGlobalReducer,
