@@ -1,19 +1,11 @@
-import React from 'react';
-import { Route } from "react-router-dom";
 import { UserSectionRoutes } from '../Users/Routes';
-import { BrowseCharities } from './../App/Views/Browse/Charities/index';
-import { CharityProfile } from './../App/Views/Browse/CharityProfile/index';
+import { AppRoutes } from '../App/Routes';
 
 export enum Routes {
     "/register", "/login"
 }
 
-const NavigationRoutes: any[] = [
-    <Route key={1} path={'/charities/:name'} component={CharityProfile} />,
-    <Route key={0} path={'/'} component={BrowseCharities} />
-];
-
 export const GlobalRoutes: any[] = [
     [...UserSectionRoutes],
-    [...NavigationRoutes]
+    [...AppRoutes]
 ];

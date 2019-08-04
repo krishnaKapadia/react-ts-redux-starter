@@ -30,4 +30,4 @@ export const Router: FunctionComponent<RouterProps> = ({ routes, withChrome }) =
       </BrowserRouter>
     );
   }
-}
+};

@@ -29,6 +29,7 @@ const TopNav: FunctionComponent = () => {
 
       <Col xs={5}>
         <div className="topNav-buttonContainer">
+          <p className="topNav-text">$5 per/ week</p>
           <IoIosNotificationsOutline className={"icon"} size={"26px"} style={{ marginRight: '30px' }} />
           <IoIosContact size={"24px"} className="icon" />
         </div>

@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Row from 'reactstrap/lib/Row';
-import { IoMdContacts, IoIosAddCircleOutline, IoIosInformationCircle } from 'react-icons/io';
+import { IoMdContacts, IoIosAddCircleOutline, IoIosInformationCircle, IoMdCheckmarkCircleOutline } from 'react-icons/io';
 import { FaRegHeart, FaUserCircle } from 'react-icons/fa';
 import { ICharity } from '../../Models';
 import './styles/style.css';
@@ -40,28 +40,32 @@ const CharityModule: FunctionComponent<Props> = ({ data, selectionHandler }) => 
 
   });
 
+  const handleSelect = () => {
+    select(!selected);
+    selectionHandler(data);
+  };
 
   return (
-    <div className={`charity-card ${ selected ? "charity-card--selected" : ''}`} onClick={() => { 
-        select(!selected);
-        selectionHandler(_id.toString());
-      }}>
-        <div className="charity-card__header">
-          <h2>{label}</h2>
-        </div>
+    <div className={`charity-card ${ selected ? "charity-card--selected" : ''}`}>
+      <div className="charity-card__header">
+        <h2>{label}</h2>
+      </div>
 
-        <div className="charity-card__logo">
-          {/* https://drivewealth.imgix.net/symbols/fb.png?fit=fillmax&w=70&h=70 */}
-          <img src={logoUrl} alt={`${name} banner image.`} />
-        </div>
+      <div className="charity-card__logo">
+        {/* https://drivewealth.imgix.net/symbols/fb.png?fit=fillmax&w=70&h=70 */}
+        <img src={logoUrl} alt={`${name} banner image.`} />
+      </div>
 
-        <div className="charity-card__text">
-          <p>Let's give them a better life!</p>
-        </div>
+      <div className="charity-card__text">
+        <p>Let's give them a better life!</p>
+      </div>
 
       <Row className="charity-card__footer">
-        <HoverAnimation>
-          <IoIosAddCircleOutline className={"clickable"} size={32} color={"#ff9ff3"} />
+        <HoverAnimation onClick={handleSelect}>
+          {
+            selected ? <IoMdCheckmarkCircleOutline className={"clickable"} size={32} color={"#00d2d3"}/> :
+            <IoIosAddCircleOutline className={"clickable"} size={32} color={"#ff9ff3"} />
+          }
         </HoverAnimation>
 
         {
@@ -77,6 +81,7 @@ const CharityModule: FunctionComponent<Props> = ({ data, selectionHandler }) => 
             <IoIosInformationCircle size={32} color={"#54a0ff"} />
           </Link>
         </HoverAnimation>
+        
       </Row>
     </div>
   );

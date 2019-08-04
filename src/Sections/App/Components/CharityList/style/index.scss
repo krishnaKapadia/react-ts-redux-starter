@@ -1,0 +1,40 @@
+.charityList {
+  margin-top: 24px;
+}
+
+.charityList__item {
+  min-height: 200px;
+  max-width: 600px; 
+  background-color: #F9F9F9;
+  border-radius: 20px;
+  padding: 20px 24px;
+}
+
+.charityList__item--number {
+  color: #48DBFB;
+  float: right;
+}
+
+.charityList__textGroup--header {
+  color: #7E7E7E;
+
+}
+
+.charityList__textGroup--text {
+  margin-top: 4px;
+}
+
+.charityList__options--remove {
+  background: none;
+  color: #FD79A8;
+  border-color: #FD79A8;
+  border-radius: 20px;
+  padding-left: 24px;
+  padding-right: 24px;
+  margin-top: 4px;
+
+  &:hover {
+    background: #FD79A8;
+    border-color: darken(#FD79A8, 10);
+  }
+}

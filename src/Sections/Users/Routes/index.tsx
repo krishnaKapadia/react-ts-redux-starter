@@ -10,7 +10,7 @@ import { OnboardingController } from '../../GetStarted';
 const baseUrl = "/auth";
 
 export const UserSectionRoutes: any[] = [
-// tslint:disable-next-line: jsx-key
+    // tslint:disable-next-line: jsx-key
     <Route path={`${baseUrl}/v2/getStarted`} component={OnboardingController} />,
 
     <Route path={`${baseUrl}/forgotPassword/:token`} component={ForgotPasswordView} />,

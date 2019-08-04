@@ -8,16 +8,16 @@ h1, h2, h3, h4, h5 {
   font-weight: 600;
 }
 
+p {
+  margin-bottom: 0px;
+}
+
 .label.label {
   padding-left: 0px;
 }
 
 .clickable {
   cursor: pointer;
-}
-
-.icon-stacked p {
-  margin-bottom: 0px;
 }
 
 .no-margin {

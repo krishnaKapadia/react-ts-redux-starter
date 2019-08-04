@@ -1,0 +1,18 @@
+.paymentContainer {
+  background-color: white;
+}
+
+.paymentContainer_header {
+  -webkit-box-pack: center !important;
+      -ms-flex-pack: center !important;
+          justify-content: center !important;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 48px;
+}
+
+.paymentContainer_header--title {
+  font-family: "Nexa" !important;
+  font-weight: 800 !important;
+}
+/*# sourceMappingURL=index.css.map */

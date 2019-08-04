@@ -2,6 +2,7 @@ import { IRequestStatus } from "../../../Utils/Redux/models";
 
 export type AppState = {
   charities: ICharity[];
+  selectedCharities: ICharity[];
   request: IRequestStatus,
   topLevelSearch: string;
 };
@@ -19,4 +20,8 @@ export type ICharity = {
 
 export type IGetAllCharitiesResponse = {
   charities: ICharity[];
+};
+
+export type IPOSTMakePaymentRequest = {
+  token: string;
 };

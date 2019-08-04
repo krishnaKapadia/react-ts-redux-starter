@@ -32,7 +32,8 @@ export const Chrome: FunctionComponent<Props> = ({ children }) => (
         <SideNav />
       </Col> */}
 
-      <Col style={{ background: '#ecf0f1' }}>
+      {/* #ecf0f1 */}
+      <Col style={{ background: 'white' }}>
         <div className="app">
           {children}
         </div>

@@ -22,6 +22,7 @@ import './Utils/Theme/utilities.css';
 // Redux
 import { createStore } from './Utils/Redux';
 import NavigationController from './Sections/Navigation';
+import Modal from './Sections/App/Components/Modals/index';
 
 const Redux = createStore();
 // Redux.persistor.purge();
@@ -30,6 +31,7 @@ ReactDOM.render(
   <ReduxProvider store={Redux.store}>
     {/* <PersistGate loading={null} persistor={Redux.persistor}> */}
       <div style={{ overflow: 'hidden' }}>
+        <Modal />
         <NavigationController />
       </div>
     {/* </PersistGate> */}

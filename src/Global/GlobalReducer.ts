@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { reducer as modal } from 'redux-modal';
 import { UserState } from '../Sections/Users/Models';
 import { CurrentUserReducer } from '../Sections/Users/Reducers/User';
 import { AppState } from '../Sections/App/Models';
@@ -11,5 +12,6 @@ export type GlobalState = {
 
 export default () => combineReducers({
     app: AppReducer,
-    user: CurrentUserReducer
+    user: CurrentUserReducer,
+    modal
 });
