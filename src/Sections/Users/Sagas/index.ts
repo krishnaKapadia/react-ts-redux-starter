@@ -3,7 +3,10 @@ import { put, call, takeLatest } from 'redux-saga/effects';
 import * as Actions from '../Actions';
 import axios from 'axios';
 import { isNil } from 'lodash';
+import jwt_decode from 'jwt-decode';
 import { ENDPOINTS } from "../../../Services/urlService";
+import { isAuthenticated } from "../../../Utils/Authentication";
+import { isError } from "../../../Utils/Network";
 
 const loginUrl = ENDPOINTS.LOGIN;
 const passwordResetUrl = ENDPOINTS.RESET_PASSWORD;
@@ -24,12 +27,12 @@ const executeResetPasswordRequest = (payload: IPasswordResetRequest): any => {
 const executeValidateResetTokenRequest = (payload: { token: string }): any => {
     console.log("Posting", payload);
     return axios.post(passwordResetTokenValidation, { token: payload });
-}
+};
 
 const executeResetPasswordViaEmailRequest = (payload: IPasswordResetViaEmailRequest): any => {
     console.log("Posting", payload);
     return axios.post(passwordResetViaEmail, payload);
-}
+};
 
 const executeRegistrationRequest = (payload: IRegistrationRequest): any => {
     console.log(payload);
@@ -50,23 +53,30 @@ const setAuthToken = (accessToken: string) => {
     // Delete auth header
     delete axios.defaults.headers.common["Authorization"];
   }
-}
-
-const authenticated = (): boolean => {
-    return !isNil(localStorage.getItem('accessToken'));
-}
+};
 
 export function* login(res_payload: any) {
     try {
-        // if(authenticated()) {
+        if(isAuthenticated()) {
+            const data: any = jwt_decode(localStorage.getItem('accessToken'));
 
-            // yield put(Actions.LoginSuccess());
-        // } else {
-            console.log(res_payload);
+            const successPayload = {
+                id: data.id,
+                email: data.email,
+                firstName: data.firstName,
+                lastName: data.lastName,
+                accessToken: localStorage.getItem('accessToken')
+            };
+
+            yield put(Actions.LoginSuccess(successPayload));
+
+        } else {
             const { payload } = res_payload;
-            const res = yield call(executeLoginRequest,  payload);
+						const res = yield call(executeLoginRequest,  payload);
+						console.log(res);
             const data = res.data;
-            if (isNil(data.success) || !data.success) {
+            if (isError(res)) {
+                console.log("error", data);
                 throw res.data1;
             } else {
                 const { accessToken } = data;
@@ -75,21 +85,12 @@ export function* login(res_payload: any) {
 
                 yield put(Actions.LoginSuccess(data));
             }
-        // }
+        }
     } catch(err) {
+        // user not found error needs to handle
         console.log(err);
         yield put(Actions.LoginFailure(err));
     }
-
-    // Set token to localStorage
-    // const { token } = res.data;
-    // localStorage.setItem("jwtToken", token);
-    // // Set token to Auth header
-    // setAuthToken(token);
-    // // Decode token to get user data
-    // const decoded = jwt_decode(token);
-    // // Set current user
-    // dispatch(setCurrentUser(decoded));
 }
 
 export function* resetPasswordRequest(req_payload: any) {

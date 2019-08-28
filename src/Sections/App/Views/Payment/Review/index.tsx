@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { Dispatch } from 'redux';
 import { isNil, isEmpty } from 'lodash';
-import { connect } from 'react-redux';
+import { connect, DispatchProp } from 'react-redux';
 import { Row, Col, Input } from 'reactstrap';
 import './styles/index.css';
 
@@ -9,17 +10,22 @@ import { GlobalState } from '../../../../../Global/GlobalReducer';
 import { ICharity } from '../../../Models';
 import { getSelectedCharities } from '../../../Selectors';
 import { CardForm } from '../../../Components/CardForm';
+import * as Actions from '../../../Actions';
 
 
 type StateProps = {
   selectedCharities: ICharity[];
 };
 
+type DispatchProps = {
+  postPayment: (token: string) => void;
+};
+
 type PassedProps = {
   history: any;
 };
 
-type Props = StateProps & PassedProps;
+type Props = StateProps & DispatchProps & PassedProps;
 class UnconnectedReviewPayment extends Component<Props> {
 
   componentDidMount() {
@@ -31,7 +37,7 @@ class UnconnectedReviewPayment extends Component<Props> {
   }
 
   render() {
-    const { selectedCharities } = this.props;
+    const { selectedCharities, postPayment } = this.props;
 
     return (
       <div className="paymentContainer">
@@ -55,8 +61,7 @@ class UnconnectedReviewPayment extends Component<Props> {
             <Col md={6}>
               <div className={"review_paymentDetails"}>
                 <p><strong>Payment details</strong></p>
-
-               <CardForm />
+                <CardForm postPayment={postPayment} />
               </div>
             </Col>
           </Row>
@@ -69,5 +74,8 @@ class UnconnectedReviewPayment extends Component<Props> {
 export const ReviewPayment = connect<StateProps>(
   (state: GlobalState) => ({
     selectedCharities: getSelectedCharities(state)
+  }),
+  (dispatch: Dispatch) => ({
+    postPayment: (token: string) => dispatch(Actions.POST_MakePaymentRequest({ token }))
   })
 )(UnconnectedReviewPayment);

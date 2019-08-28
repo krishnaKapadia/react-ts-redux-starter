@@ -1,10 +1,6 @@
 import React, { FunctionComponent, useState } from 'react';
 import { StripeProvider, Elements, CardNumberElement, CardExpiryElement, CardCVCElement, injectStripe } from 'react-stripe-elements';
 import { Row, Col, Button } from 'reactstrap';
-import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
-
-import * as Actions from '../../Actions';
 import './index.css';
 
 const Form: FunctionComponent<DispatchProps & any> = ({ postPayment, stripe }) => {
@@ -61,7 +57,7 @@ const Form: FunctionComponent<DispatchProps & any> = ({ postPayment, stripe }) =
       </Row>
     </form>
   );
-}
+};
 
 const InputForm = injectStripe(Form);
 
@@ -75,21 +71,12 @@ type DispatchProps = {
 };
 
 type Props = StateProps & DispatchProps;
-const UnconnectedCardForm: FunctionComponent<Props> = ({ postPayment }) => (
-  <StripeProvider apiKey={"apiKey"}>
+export const CardForm: FunctionComponent<Props> = ({ postPayment }) => (
+  <StripeProvider apiKey={"pk_test_8tHvkTGwl4keWzePgMS8mSB9002ScSznJ0"}>
     <Elements>
-
       <div className="cardForm__container">
         <InputForm postPayment={postPayment} />
       </div>
-
     </Elements>
   </StripeProvider>
 );
-
-export const CardForm = connect<StateProps, DispatchProps>(
-  null,
-  (dispatch: Dispatch) => ({
-    postPayment: (token: string) => dispatch(Actions.POST_MakePaymentRequest({ token }))
-  })
-)(UnconnectedCardForm);

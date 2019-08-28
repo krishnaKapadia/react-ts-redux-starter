@@ -92,7 +92,7 @@ class UnconnectedBrowseCharities extends Component<Props, State> {
 
   render() {
     const { isFetching, selectedCharities } = this.props;
-
+    
     return (
       <div className="container">
         <div className="container-header">
@@ -109,8 +109,8 @@ class UnconnectedBrowseCharities extends Component<Props, State> {
 
               <DropdownMenu>
                 {
-                  Categories.map((item) => (
-                    <DropdownItem href={`#/${item}`}>{item}</DropdownItem>
+                  Categories.map((item, idx) => (
+                    <DropdownItem key={idx} href={`#/${item}`}>{item}</DropdownItem>
                   ))
                 }
               </DropdownMenu>
@@ -124,8 +124,8 @@ class UnconnectedBrowseCharities extends Component<Props, State> {
 
               <DropdownMenu>
                 {
-                  SortBy.map((item) => (
-                    <DropdownItem href={`#/${item.name}`}>{item.name}</DropdownItem>
+                  SortBy.map((item, idx) => (
+                    <DropdownItem key={idx} href={`#/${item.name}`}>{item.name}</DropdownItem>
                   ))
                 }
               </DropdownMenu>
@@ -135,18 +135,16 @@ class UnconnectedBrowseCharities extends Component<Props, State> {
 
         <div className="container-body">
           {
-            isFetching && 
+            isFetching ? 
               <div style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <ClipLoader size={64} loading={isFetching} />
               </div>
+            :
+            <Row>
+              { this.renderCharities() }
+            </Row>
           }
-
-          <Row>
-            { this.renderCharities() }
-          </Row>
         </div>
-
-        
         
         <Box className={"floatingContainer floatingContainer--left"} pose={selectedCharities.length > 0 ? 'visible' : 'hidden'} size={100}>
           <p>

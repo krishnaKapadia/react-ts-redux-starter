@@ -1,10 +1,9 @@
 import { reducerWithInitialState } from 'typescript-fsa-reducers';
-import { UserState, UserPayload, LoginResponse, InitialLoginState, IValidateResetTokenStatus, IPasswordResetViaEmailRequest } from "../Models";
+import { UserState, InitialLoginState } from "../Models";
 import * as Actions from '../Actions';
-import { UserReducer } from './index';
 import { InitialRequestState, ErrorResponse } from '../../../Utils/Redux/models';
 import { reducerUpdate } from './../../../Utils/Redux/reducer-utils';
-import { applyMiddleware } from 'redux';
+import { getTokenFromLocalStorage } from '../../../Utils/Authentication/index';
 
 const INITIAL_STATE: UserState = {
     id: "",
@@ -126,8 +125,13 @@ export const CurrentUserReducer = reducerWithInitialState(INITIAL_STATE)
         }
     })
 )
-.case(Actions.LoginRequest, (state: UserState) => 
+.case(Actions.LogOut, (state: UserState) => 
     reducerUpdate(state, {
+        ...INITIAL_STATE
+    })
+)
+.case(Actions.LoginRequest, (state: UserState) => {
+    return reducerUpdate(state, {
             login: {
                 ...InitialLoginState,
                 sent: true,
@@ -135,10 +139,10 @@ export const CurrentUserReducer = reducerWithInitialState(INITIAL_STATE)
                 failure: null, 
             }
         }
-    )
+    );
+    }
 )
 .case(Actions.LoginSuccess, (state: UserState, res_payload: any) =>  {
-    console.log("SAGA ", res_payload);
     const { email, id, firstName, lastName, accessToken } = res_payload;
     return reducerUpdate(state, {
         id,
@@ -147,10 +151,10 @@ export const CurrentUserReducer = reducerWithInitialState(INITIAL_STATE)
         lastName,
         accessToken,
         login: {
+            ...InitialLoginState,
             sent: false,
             success: true,
             failure: null,
-            ...InitialLoginState
         }
     });
 })

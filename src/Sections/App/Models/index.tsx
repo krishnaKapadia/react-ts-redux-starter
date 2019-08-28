@@ -7,7 +7,6 @@ export type AppState = {
   topLevelSearch: string;
 };
 
-
 export type ICharity = {
   _id: string;
   name: string;

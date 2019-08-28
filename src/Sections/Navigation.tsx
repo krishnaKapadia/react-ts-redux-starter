@@ -6,10 +6,7 @@ import '../Styles/global.css';
 type Props = {};
 
 const NavigationController: FunctionComponent<Props> = ({}) => {
-  const url = window.location.pathname;
-  const renderChrome = url.indexOf("auth") === -1;
-
-  return <Router routes={GlobalRoutes} withChrome={renderChrome} />;
+  return <Router routes={GlobalRoutes} />;
 };
 
 export default NavigationController;

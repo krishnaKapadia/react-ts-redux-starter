@@ -24,6 +24,9 @@ export const LoginRequest = createAction<ILoginRequest>('LOGIN_REQUEST');
 export const LoginSuccess = createAction<LoginResponse>('LOGIN_SUCCESS');
 export const LoginFailure = createAction<ErrorResponse>('LOGIN_FAILURE');
 
+// Logout
+export const LogOut = createAction('LOGOUT');
+
 // Register
 export const RegistrationRequest = createAction<IRegistrationRequest>("REGISTRATION_REQUEST");
 export const RegistrationSuccessful = createAction<RegistrationResponse>("REGISTRATION_SUCCESS");

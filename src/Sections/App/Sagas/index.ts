@@ -15,16 +15,11 @@ const POST_AddCreditCard = (token: string): any => {
   return axios.post(makePaymentUrl, token);
 };
 
-
 export function* getAllCharities() {
   try {
     const res = yield call(GET_AllCharities);
     const { data } = res;
-    // if(isNil(data.success) || !data.success) {
-    //   throw res.data;
-    // } else {
       yield put(Actions.GET_AllCharitiesSuccess(data));
-    // }
 
   } catch (err) {
     console.log("ERROR: ", err);
@@ -44,7 +39,6 @@ export function* makePayment({ token }: any) {
     yield put(Actions.POST_MakePaymentFailure(err));
   }
 }
-
 
 export function* AppSagas() {
   yield takeLatest(Actions.GET_AllCharitiesRequest, getAllCharities);

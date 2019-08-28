@@ -71,6 +71,11 @@ export const isRegistrationLoading = createSelector(
         isNil(state.registration.failure)
 );
 
+export const hasLoginSucceeded = createSelector(
+    userState,
+    state => state.login.success
+);
+
 export const hasPasswordResetRequestSucceeded = createSelector(
     userState,
     state => 
