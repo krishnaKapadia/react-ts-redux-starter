@@ -1,3 +1,39 @@
+# Lend a hand - Web Application
+
+### Getting up and running
+
+1. Clone down the repo
+2. `cd` into the folder and install dependencies:`npm install`
+3. Run `npm run dev`.
+
+### CI/CD
+
+Pipeline:
+
+1. Push to master
+2. Circle CI will build and run all tests.
+3. On success, this will update Heroku and be deployed.
+
+Notes:
+1. Currently there is no tests in this repo and this will need to be changed in the future before release. 
+
+### Tech Stack
+
+Language:
+- Typescript + Javascipt ES6.
+
+Core Libraries:
+- React
+- Redux
+- Redux Saga
+- Reselect
+- Typescript-fsa
+- Typescript-fsa-reducers
+- ...
+
+
+# Create React App auto-generated ReadMe
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
