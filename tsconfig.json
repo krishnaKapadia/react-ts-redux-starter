@@ -1,5 +1,4 @@
 {
-  // "extends": "./tsconfig.paths.json",
   "compilerOptions": {
     "sourceMap": true,
     "noImplicitAny": true,
@@ -11,7 +10,9 @@
     "target": "es5",
     "jsx": "preserve",
     "forceConsistentCasingInFileNames": true,
-    "typeRoots": ["./src/Utils"],
+    "typeRoots": [
+      "./src/Utils"
+    ],
     "moduleResolution": "node",
     "lib": [
       "es5",
@@ -26,9 +27,9 @@
     "skipLibCheck": true,
     "strictNullChecks": false,
     "resolveJsonModule": true,
-    "isolatedModules": true,
     "noEmit": true,
-    "strict": false
+    "strict": false,
+    "isolatedModules": true
   },
   "include": [
     "src"
