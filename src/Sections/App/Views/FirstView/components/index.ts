@@ -1,10 +1,5 @@
-import { screenSmallOnly } from '../../../../../Utils/Fela/breakpoints';
 import { IStyle } from 'fela';
 import { createComponent } from 'react-fela';
-import { applyModifiers } from '../../../../../Utils/Fela/modifiers';
-import { screenMediumAndAbove } from '../../../../../Utils/Fela/breakpoints';
-
-export * from './CharityBox';
 
 const StyledContainer = (): IStyle => ({
     display: 'flex',
@@ -67,36 +62,4 @@ const StyledP = ({ lightWeight, dark }: { lightWeight?: boolean, dark?: boolean 
     fontWeight: lightWeight ? 300 : 400
 });
 export const P = createComponent(StyledP, 'p');
-
-const StyledStepContainer = (): IStyle => ({
-    display: 'flex',
-    justifyContent: 'space-around',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    alignItems: 'center',
-});
-export const StepContainer = createComponent(StyledStepContainer);
-
-const StyledStep = ({ active }: { active?: boolean }): IStyle => ({
-    ...(active) ? {
-        backgroundColor: '#00CEC9',
-        height: '50px',
-        width: '50px',
-        borderRadius: '50%',
-        alignItems: 'center',
-        display: 'flex',
-        justifyContent: 'center',
-        color: 'white'
-    } : { 
-        color: '#A9A9A9'
-    }
-});
-export const Step = createComponent(StyledStep);
-
-
-const StyledImage = (): IStyle => ({
-    height: '50vh', 
-    minHeight: '300px',
-});
-export const Image = createComponent(StyledImage, 'img');
 
