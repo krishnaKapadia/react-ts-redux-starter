@@ -20,7 +20,7 @@
     "@types/redux-persist": "^4.3.1",
     "@types/reselect": "^2.2.0",
     "autonumeric": "^4.5.4",
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "bloomer": "^0.6.5",
     "bootstrap": "^4.3.1",
     "bulma": "^0.8.0",
